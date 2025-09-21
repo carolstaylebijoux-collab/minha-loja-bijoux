@@ -3,165 +3,91 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Minha Loja de Joias</title>
+<title>Minha Loja Bijoux</title>
 <style>
-    body, html {
-        margin: 0;
-        padding: 0;
-        font-family: 'Arial', sans-serif;
-        background-color: #fffafc;
-        color: #333;
-    }
-
-    a { text-decoration: none; color: inherit; }
-
-    header {
-        background: linear-gradient(90deg, #dcb3ff, #f7c6e7);
-        padding: 20px;
-        text-align: center;
-        color: #4b0082;
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-    }
-
-    header h1 { margin: 0; font-size: 36px; }
-    nav { margin-top: 10px; }
-    nav a { margin: 0 15px; font-size: 18px; font-weight: bold; transition: color 0.2s; }
-    nav a:hover { color: #8a2be2; }
-    header p { margin-top: 10px; font-size: 16px; }
-
-    .products {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 25px;
-        padding: 30px 10px;
-    }
-
-    .product {
-        background-color: #fff;
-        border: 2px solid #f2e6ff;
-        border-radius: 15px;
-        width: 280px;
-        padding: 20px;
-        text-align: center;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        transition: transform 0.2s;
-    }
-
-    .product:hover { transform: translateY(-5px); }
-    .product img { width: 100%; border-radius: 12px; margin-bottom: 15px; }
-    .product h2 { font-size: 22px; color: #8a2be2; margin: 10px 0; }
-    .product p { font-size: 18px; color: #b36bff; margin-bottom: 15px; font-weight: bold; }
-
-    .product button {
-        background-color: #dcb3ff;
-        color: #4b0082;
-        border: none;
-        padding: 12px 20px;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: 16px;
-        transition: background-color 0.2s;
-        margin-bottom: 5px;
-    }
-
-    .product button:hover { background-color: #c29bff; }
-
-    .product .pix {
-        background-color: #ffe6f2;
-        color: #4b0082;
-    }
-
-    .product .pix:hover { background-color: #ffd1e6; }
-
-    footer {
-        text-align: center;
-        padding: 20px;
-        background: linear-gradient(90deg, #f7c6e7, #dcb3ff);
-        color: #4b0082;
-        margin-top: 20px;
-    }
-
-    footer a { margin: 0 10px; color: #4b0082; font-weight: bold; transition: color 0.2s; }
-    footer a:hover { color: #8a2be2; }
-
-    @media (max-width: 1024px) { .products { justify-content: center; } }
-    @media (max-width: 768px) {
-        .products { flex-direction: column; align-items: center; }
-        .product { width: 90%; }
-        nav a { display: block; margin: 5px 0; }
-    }
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #fdf7f7; }
+    header { background: #f5c6c6; padding: 20px; text-align: center; }
+    h1 { margin: 0; color: #6b2a2a; }
+    .produto { border: 1px solid #ddd; padding: 10px; margin: 20px; border-radius: 10px; text-align: center; display: inline-block; width: 200px; background: #fff; }
+    .produto img { width: 150px; height: 150px; object-fit: cover; }
+    .produto h2 { font-size: 18px; margin: 10px 0 5px; }
+    .produto p { margin: 5px 0; }
+    .botao { display: inline-block; padding: 10px 20px; background: #6b2a2a; color: #fff; text-decoration: none; border-radius: 5px; margin-top: 10px; }
+    form { margin: 20px; }
+    input, button { padding: 5px; margin: 5px 0; width: 100%; }
 </style>
 </head>
 <body>
 
 <header>
-    <h1>Minha Loja de Joias</h1>
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#produtos">Produtos</a>
-        <a href="#contato">Contato</a>
-    </nav>
-    <p>Peças únicas, elegantes, com pagamento via Mercado Pago ou Pix</p>
+    <h1>Minha Loja Bijoux</h1>
 </header>
 
-<section id="produtos" class="products">
+<section>
+    <h2>Adicionar Produto</h2>
+    <form id="formProduto">
+        <input type="text" id="nome" placeholder="Nome do produto" required>
+        <input type="number" id="preco" placeholder="Preço do produto (R$)" required>
+        <input type="text" id="imagem" placeholder="URL da imagem" required>
+        <input type="text" id="link" placeholder="Link Mercado Pago" required>
+        <button type="submit">Adicionar Produto</button>
+    </form>
+</section>
 
-<!-- Produto 1 -->
-<div class="product">
-    <img src="https://via.placeholder.com/280x280.png?text=Pulseira+Luxor" alt="Pulseira Luxor">
-    <h2>Pulseira Luxor</h2>
-    <p>R$ 120,00</p>
-    <!-- Peso e dimensões: 0.050kg, Altura: 2cm, Largura: 5cm, Profundidade: 5cm -->
-    <button onclick="window.open('https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=SEU_LINK_DO_PRODUTO1', '_blank')">Comprar Mercado Pago</button>
-    <button class="pix" onclick="alert('Copie este código Pix: 00020126580014BR.GOV.BCB.PIX0136seu-pix-aqui520400005303986590,00');">Pagar com Pix</button>
-</div>
+<section id="produtosContainer">
+    <h2>Produtos</h2>
+    <!-- Produtos serão adicionados aqui -->
+</section>
 
-<!-- Produto 2 -->
-<div class="product">
-    <img src="https://via.placeholder.com/280x280.png?text=Colar+Primavera+Lavender" alt="Colar Primavera Lavender">
-    <h2>Colar Primavera Lavender</h2>
-    <p>R$ 150,00</p>
-    <!-- Peso e dimensões: 0.070kg, Altura: 3cm, Largura: 6cm, Profundidade: 6cm -->
-    <button onclick="window.open('https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=SEU_LINK_DO_PRODUTO2', '_blank')">Comprar Mercado Pago</button>
-    <button class="pix" onclick="alert('Copie este código Pix: 00020126580014BR.GOV.BCB.PIX0136seu-pix-aqui5204000053039865150,00');">Pagar com Pix</button>
-</div>
+<script>
+    const form = document.getElementById('formProduto');
+    const container = document.getElementById('produtosContainer');
 
-<!-- Produto 3 -->
-<div class="product">
-    <img src="https://via.placeholder.com/280x280.png?text=Brincos+Flor+de+Rubi" alt="Brincos Flor de Rubi">
-    <h2>Brincos Flor de Rubi</h2>
-    <p>R$ 90,00</p>
-    <!-- Peso e dimensões: 0.030kg, Altura: 1cm, Largura: 4cm, Profundidade: 2cm -->
-    <button onclick="window.open('https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=SEU_LINK_DO_PRODUTO3', '_blank')">Comprar Mercado Pago</button>
-    <button class="pix" onclick="alert('Copie este código Pix: 00020126580014BR.GOV.BCB.PIX0136seu-pix-aqui520400005303986590,00');">Pagar com Pix</button>
-</div>
+    const produtos = [];
 
-<!-- Produto 4 -->
-<div class="product">
-    <img src="https://via.placeholder.com/280x280.png?text=Anel+Estrela+Lilás" alt="Anel Estrela Lilás">
-    <h2>Anel Estrela Lilás</h2>
-    <p>R$ 80,00</p>
-    <!-- Peso e dimensões: 0.025kg, Altura: 1cm, Largura: 3cm, Profundidade: 3cm -->
-    <button onclick="window.open('https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=SEU_LINK_DO_PRODUTO4', '_blank')">Comprar Mercado Pago</button>
-    <button class="pix" onclick="alert('Copie este código Pix: 00020126580014BR.GOV.BCB.PIX0136seu-pix-aqui520400005303986580,00');">Pagar com Pix</button>
-</div>
+    function renderProdutos() {
+        container.innerHTML = '<h2>Produtos</h2>'; // Limpa a lista antes de renderizar
+        produtos.forEach((produto, index) => {
+            const div = document.createElement('div');
+            div.className = 'produto';
+            div.innerHTML = `
+                <img src="${produto.imagem}" alt="${produto.nome}">
+                <h2>${produto.nome}</h2>
+                <p>Preço: R$ ${produto.preco.toFixed(2)}</p>
+                <a class="botao" href="${produto.link}" target="_blank">Comprar</a>
+                <button onclick="editarProduto(${index})">Editar</button>
+            `;
+            container.appendChild(div);
+        });
+    }
 
-<!-- Produto 5 -->
-<div class="product">
-    <img src="https://via.placeholder.com/280x280.png?text=Pulseira+Rosa+Dourada" alt="Pulseira Rosa Dourada">
-    <h2>Pulseira Rosa Dourada</h2>
-    <p>R$ 130,00</p>
-    <!-- Peso e dimensões: 0.060kg, Altura: 2cm, Largura: 5cm, Profundidade: 5cm -->
-    <button onclick="window.open('https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=SEU_LINK_DO_PRODUTO5', '_blank')">Comprar Mercado Pago</button>
-    <button class="pix" onclick="alert('Copie este código Pix: 00020126580014BR.GOV.BCB.PIX0136seu-pix-aqui5204000053039865130,00');">Pagar com Pix</button>
-</div>
+    function editarProduto(index) {
+        const produto = produtos[index];
+        const novoNome = prompt("Novo nome do produto:", produto.nome);
+        if(novoNome) produto.nome = novoNome;
+        const novoPreco = prompt("Novo preço do produto (R$):", produto.preco);
+        if(novoPreco) produto.preco = parseFloat(novoPreco);
+        const novaImagem = prompt("Nova URL da imagem:", produto.imagem);
+        if(novaImagem) produto.imagem = novaImagem;
+        const novoLink = prompt("Novo link do Mercado Pago:", produto.link);
+        if(novoLink) produto.link = novoLink;
+        renderProdutos();
+    }
 
-<!-- Produto 6 -->
-<div class="product">
-    <img src="https://via.placeholder.com/280x280.png?text=Colar+Diva+Lilás" alt="Colar Diva Lilás">
-    <h2>Colar Diva Lilás</h2>
-    <p>R$ 160,00</p>
-    <!-- Peso e dimensões: 0.080kg, Altura: 3cm, Largura: 6
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const nome = document.getElementById('nome').value;
+        const preco = parseFloat(document.getElementById('preco').value);
+        const imagem = document.getElementById('imagem').value;
+        const link = document.getElementById('link').value;
+
+        produtos.push({ nome, preco, imagem, link });
+        form.reset();
+        renderProdutos();
+    });
+
+    renderProdutos();
+</script>
+
+</body>
+</html>
